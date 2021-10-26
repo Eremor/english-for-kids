@@ -24,52 +24,6 @@ const prettierPlugin = (isDev) =>
       ]
     : [];
 
-// const config = ({ develop }) => ({
-//   mode: develop ? "development" : "production",
-//   devtool: develop ? "inline-source-map" : "source-map",
-//   output: {
-//     path: path.resolve(__dirname, "dist"),
-//     filename: "[name].[contenthash].js",
-//     assetModuleFilename: "assets/[hash][ext]",
-//     publicPath: "/",
-//   },
-//   module: {
-//     rules: [
-//       {
-//         test: /\.(ts|js)x?$/,
-//         use: "ts-loader",
-//         exclude: /node_modules/,
-//       },
-//       {
-//         test: /\.(?:ico|gif|png|jpg|jpeg|svg)$/i,
-//         type: "asset/resource",
-//       },
-//       {
-//         test: /\.(woff(2)?|eot|ttf|otf)$/i,
-//         type: "asset/resource",
-//       },
-//     ],
-//   },
-//   resolve: {
-//     extensions: [".tsx", ".ts", ".jsx", ".js"],
-//   },
-//   plugins: [
-//     new MiniCssExtractPlugin({
-//       filename: "[name].[contenthash].css",
-//     }),
-//     new CleanWebpackPlugin({
-//       cleanStaleWebpackAssets: false,
-//     }),
-//     // new CopyPlugin({
-//     //   patterns: [
-//     //     {from: './public'}
-//     //   ]
-//     // }),
-//     ...esLintPlugin(develop),
-//     ...prettierPlugin(develop),
-//   ],
-// });
-
 const clientConfig = ({ develop }) => ({
   mode: develop ? "development" : "production",
   devtool: develop ? "inline-source-map" : "source-map",
@@ -128,8 +82,8 @@ const clientConfig = ({ develop }) => ({
     //     {from: './public'}
     //   ]
     // }),
-    ...esLintPlugin(develop),
     ...prettierPlugin(develop),
+    ...esLintPlugin(develop),
   ],
 });
 
@@ -173,8 +127,8 @@ const serverConfig = ({ develop }) => ({
     new CleanWebpackPlugin({
       cleanStaleWebpackAssets: false,
     }),
-    ...esLintPlugin(develop),
     ...prettierPlugin(develop),
+    ...esLintPlugin(develop),
   ],
 });
 

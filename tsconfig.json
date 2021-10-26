@@ -28,12 +28,12 @@
       "@server/*": ["./server/src/*"]
     }
   },
-  "include": ["./tests", "./shared", "./client", "./server"],
+  "include": ["./shared", "./client", "./server"],
   "ts-node": {
     "transpileOnly": true,
     "require": ["tsconfig-paths/register"],
     "compilerOptions": {
       "module": "CommonJS"
     }
-  }
+  },
 }
