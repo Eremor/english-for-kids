@@ -29,7 +29,8 @@
     "react-redux": "^7.2.5",
     "react-router-dom": "^5.3.0",
     "styled-components": "^5.3.3",
-    "typescript": "^4.4.4"
+    "typescript": "^4.4.4",
+    "uuid": "^3.4.0"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",
@@ -61,7 +62,6 @@
     "ts-loader": "^9.2.6",
     "ts-node": "^10.4.0",
     "ts-node-dev": "^1.1.8",
-    "uuid": "^3.4.0",
     "webpack": "^5.59.1",
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.3.1",
