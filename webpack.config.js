@@ -98,7 +98,7 @@ const serverConfig = ({ develop }) => ({
   },
   output: {
     path: path.resolve(__dirname, "dist/server"),
-    filename: "[name].[contenthash].js",
+    filename: "[name].js",
     assetModuleFilename: "assets/[hash][ext]",
     publicPath: "/",
   },

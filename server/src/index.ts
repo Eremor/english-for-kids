@@ -1,6 +1,7 @@
 import path from 'path';
 import express, { ErrorRequestHandler } from 'express';
 import { createServer } from 'http';
+import cors from 'cors';
 import categoryRouter from './routers/categories';
 
 export const PORT = process.env.PORT || 3000;
@@ -12,6 +13,7 @@ const buildPath = path.join(__dirname, '../../dist/server/');
 
 app.use(express.static(buildPath));
 app.use(express.json());
+app.use(cors());
 app.use('/category', categoryRouter);
 
 // Errors
