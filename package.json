@@ -8,7 +8,8 @@
     "dev": "webpack --env develop",
     "lint": "eslint ./ --ext .ts,.tsx --fix",
     "server": "ts-node ./server/src/index.ts",
-    "server:dev": "ts-node-dev --respawn --pretty --transpile-only ./server/src/index.ts"
+    "server:dev": "ts-node-dev --respawn --pretty --transpile-only ./server/src/index.ts",
+    "postinstall": "npm run build"
   },
   "repository": {
     "type": "git",
