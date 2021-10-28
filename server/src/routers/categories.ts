@@ -1,11 +1,11 @@
 import { Router } from 'express';
 import { v4 as uuid } from 'uuid';
-import * as storage from '../storage/fs';
+import * as storage from '../storage/mongo';
 
 const router = Router();
 
 router.get('/', async (req, res, next) => {
-  const list = await storage.getAllCategories();
+  const list = await storage.getAll();
 
   res.json(list);
 });
@@ -21,7 +21,7 @@ router.post('/', async (req, res, next) => {
   const { body } = req;
   body.id = id;
 
-  const newBody = await storage.createCategory(body);
+  const newBody = await storage.create(body);
 
   res.json(newBody);
 });
@@ -29,7 +29,7 @@ router.post('/', async (req, res, next) => {
 router.put('/:id', async (req, res, next) => {
   const { body } = req;
 
-  const newBody = await storage.updateCategory({
+  const newBody = await storage.update({
     ...body,
     id: req.params.id,
   });
@@ -38,7 +38,7 @@ router.put('/:id', async (req, res, next) => {
 });
 
 router.delete('/:id', async (req, res, next) => {
-  await storage.removeCategory(req.params.id);
+  await storage.remove(req.params.id);
 
   res.status(204).json(null);
 });
