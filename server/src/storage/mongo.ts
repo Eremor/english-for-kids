@@ -9,10 +9,9 @@ import {
 } from 'mongodb';
 import { CategoryType } from 'types/category';
 
-const { MONGO_USERNAME, MONGO_PASSWORD, MONGO_HOST} = process.env;
+const { MONGO_USERNAME, MONGO_PASSWORD, MONGO_HOST } = process.env;
 
-const dbUrl =
-  `mongodb+srv://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOST}/?retryWrites=true&w=majority`;
+const dbUrl = `mongodb+srv://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOST}/?retryWrites=true&w=majority`;
 
 const dbName = 'english-for-kids';
 
