@@ -1,5 +1,5 @@
 import React from 'react';
-import './app.scss';
+import './app.css';
 
 const App = () => {
   const arr = [1, 2, 3, 4, 5];
