@@ -15,7 +15,7 @@ const ModeSwitch = styled(Switch)(({ theme }) => ({
       transform: 'translateX(72px)',
       color: '#fff',
       '& + .MuiSwitch-track': {
-        backgroundColor: '#7033FF',
+        backgroundColor: theme.palette.primary,
         opacity: 1,
         border: 0,
         '&:before': {
@@ -29,7 +29,7 @@ const ModeSwitch = styled(Switch)(({ theme }) => ({
     },
   },
   '& .MuiSwitch-track': {
-    backgroundColor: '#FFBC29',
+    backgroundColor: theme.palette.secondary.main,
     opacity: 1,
     border: 0,
     height: 30,
