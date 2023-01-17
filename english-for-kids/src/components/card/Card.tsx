@@ -21,8 +21,8 @@ const Card: FC = () => {
         <CardMedia component="img" height="203" sx={{ backgroundColor: 'grey' }} />
         <CardContent>
           <Stack direction="row" justifyContent="space-between" alignItems="center">
-            <Typography variant="h5" sx={{ fontWeight: '500' }}>
-              Dragon
+            <Typography variant="h5" sx={{ fontWeight: '500', textTransform: 'capitalize' }}>
+              dragon
             </Typography>
             <IconButton onClick={handleFlip}>
               <RefreshRounded />
@@ -33,8 +33,8 @@ const Card: FC = () => {
       <Stack onMouseLeave={() => setFlip(false)} className="back">
         <CardMedia component="img" height="203" sx={{ backgroundColor: 'grey' }} />
         <CardContent>
-          <Typography variant="h5" sx={{ mt: 0.5, fontWeight: '500' }}>
-            Дракон
+          <Typography variant="h5" sx={{ mt: 0.5, fontWeight: '500', textTransform: 'capitalize' }}>
+            дракон
           </Typography>
         </CardContent>
       </Stack>

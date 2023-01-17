@@ -7,7 +7,10 @@ const Header: FC = () => {
   const [isOpen, setOpen] = useState(false);
   return (
     <AppBar position="static" color="transparent" sx={{ boxShadow: 0 }}>
-      <Container maxWidth="lg" sx={{ display: 'flex', alignItems: 'center', mt: 2 }}>
+      <Container
+        maxWidth={false}
+        sx={{ display: 'flex', alignItems: 'center', mt: 2, maxWidth: 1440 }}
+      >
         <Toolbar>
           <IconButton color="primary" size="large" onClick={() => setOpen((prev) => !prev)}>
             {isOpen ? <CloseRounded fontSize="large" /> : <MenuRounded fontSize="large" />}

@@ -10,21 +10,28 @@ import {
   useTheme,
 } from '@mui/material';
 
-const Category: FC = () => {
+type CategoryProp = {
+  image: string;
+  title: string;
+  length: number;
+};
+
+const Category: FC<CategoryProp> = ({ title, image, length }) => {
   const theme = useTheme();
   const [gameMode] = useState('play');
 
   return (
-    <Card sx={{ maxWidth: 295, borderRadius: 3 }}>
+    <Card sx={{ maxWidth: 295, borderRadius: 3, width: '100%' }}>
       <CardActionArea>
-        <CardMedia component="img" height="203" sx={{ backgroundColor: 'grey' }} />
+        <CardMedia component="img" image={image} height="203" sx={{ backgroundColor: 'grey' }} />
         <CardContent>
-          <Typography variant="h5" sx={{ mb: 1, fontWeight: '700' }}>
-            Fairitails
+          <Typography variant="h5" sx={{ mb: 1, fontWeight: '700', textTransform: 'capitalize' }}>
+            {title}
           </Typography>
           <Stack direction="row" justifyContent="space-between" alignItems="flex-start">
             <Typography variant="body2" sx={{ fontSize: 11 }} color={theme.palette.primary.main}>
-              8 words
+              {length}
+              {length > 1 ? ' words' : ' word'}
             </Typography>
             <Box
               sx={{
