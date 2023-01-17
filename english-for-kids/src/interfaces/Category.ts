@@ -1,7 +1,7 @@
-import { Word } from "./Word";
+import { Word } from './Word';
 
 export interface Category {
-  id: number;
+  id: string;
   title: string;
   image: string;
   words: Word[];

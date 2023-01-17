@@ -6,6 +6,7 @@ interface CustomCardProps extends PaperProps {
 
 const CustomCard = styled(Card)(({ flip }: CustomCardProps) => ({
   position: 'relative',
+  width: '100%',
   minHeight: '283px',
   transformStyle: 'preserve-3d',
   transition: 'all 0.5s ease',
