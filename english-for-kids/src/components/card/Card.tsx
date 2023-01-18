@@ -3,8 +3,11 @@ import { CardContent, CardMedia, IconButton, Stack, Typography } from '@mui/mate
 import { RefreshRounded } from '@mui/icons-material';
 
 import CustomCard from './CustomCard';
+import { Word } from '../../interfaces/Word';
 
-const Card: FC = () => {
+type CardProps = Pick<Word, 'title' | 'translate' | 'image'>;
+
+const Card: FC<CardProps> = ({ title, translate, image }: CardProps) => {
   const [flip, setFlip] = useState(false);
 
   const handleFlip: MouseEventHandler = (event) => {
@@ -18,11 +21,11 @@ const Card: FC = () => {
       flip={flip ? flip.toString() : undefined}
     >
       <Stack className="front">
-        <CardMedia component="img" height="203" sx={{ backgroundColor: 'grey' }} />
+        <CardMedia component="img" image={image} height="203" sx={{ backgroundColor: 'grey' }} />
         <CardContent>
           <Stack direction="row" justifyContent="space-between" alignItems="center">
             <Typography variant="h5" sx={{ fontWeight: '500', textTransform: 'capitalize' }}>
-              dragon
+              {title}
             </Typography>
             <IconButton onClick={handleFlip}>
               <RefreshRounded />
@@ -31,10 +34,10 @@ const Card: FC = () => {
         </CardContent>
       </Stack>
       <Stack onMouseLeave={() => setFlip(false)} className="back">
-        <CardMedia component="img" height="203" sx={{ backgroundColor: 'grey' }} />
+        <CardMedia component="img" image={image} height="203" sx={{ backgroundColor: 'grey' }} />
         <CardContent>
           <Typography variant="h5" sx={{ mt: 0.5, fontWeight: '500', textTransform: 'capitalize' }}>
-            дракон
+            {translate}
           </Typography>
         </CardContent>
       </Stack>
