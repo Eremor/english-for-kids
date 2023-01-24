@@ -23,7 +23,11 @@ const Homepage: FC = () => {
       }}
     >
       {cards.map((category) => (
-        <Link key={category.id} to={`/${category.title}`} style={{ textDecoration: 'none' }}>
+        <Link
+          key={category.id}
+          to={`/${category.title}`}
+          style={{ textDecoration: 'none', width: '100%', maxWidth: '295px' }}
+        >
           <Category title={category.title} image={category.image} length={category.words.length} />
         </Link>
       ))}
