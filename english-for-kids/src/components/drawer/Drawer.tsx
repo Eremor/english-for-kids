@@ -7,30 +7,21 @@ import { cards } from '../../data/cards';
 
 const Drawer: FC = () => {
   const matches = useMediaQuery('(min-width: 1440px)');
-  const [open, setOpen] = useState(true);
-  const location = useLocation();
-  const theme = useTheme();
-
-  const drawActiveLink = (link: string): string => {
-    const active = theme.palette.secondary.main;
-    const base = theme.palette.primary.main;
-
-    return location.pathname === link ? active : base;
-  };
+  const [open, setOpen] = useState(false);
 
   return (
     <CustomDrawer
       open={open}
       sx={{ zIndex: 10 }}
       PaperProps={{
-        sx: { pt: 8, width: matches ? '25%' : '320px', alignItems: 'center' },
+        sx: { pt: 10, width: matches ? '25%' : '320px', alignItems: 'center' },
       }}
       onClose={() => setOpen(false)}
     >
       <MenuList sx={{ width: '100%' }}>
-        <MenuLink to="/" title="main page" color={`${drawActiveLink('/')}`} />
+        <MenuLink to="" title="main page" />
         {cards.map(({ title, id }) => (
-          <MenuLink key={id} to={title} title={title} color={`${drawActiveLink(`/${title}`)}`} />
+          <MenuLink key={id} to={title} title={title} />
         ))}
       </MenuList>
     </CustomDrawer>
