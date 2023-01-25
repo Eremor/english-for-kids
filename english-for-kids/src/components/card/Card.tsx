@@ -2,7 +2,7 @@ import React, { FC, MouseEventHandler, useState } from 'react';
 import { CardContent, CardMedia, IconButton, Stack, Typography } from '@mui/material';
 import { RefreshRounded } from '@mui/icons-material';
 
-import CustomCard from './CustomCard';
+import { CustomCard } from './CustomCard';
 import { Word } from '../../interfaces/Word';
 
 type CardProps = Pick<Word, 'title' | 'translate' | 'image'>;
@@ -45,4 +45,4 @@ const Card: FC<CardProps> = ({ title, translate, image }: CardProps) => {
   );
 };
 
-export default Card;
+export { Card };

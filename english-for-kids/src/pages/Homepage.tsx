@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { Container } from '@mui/material';
 
-import Category from '../components/category';
+import { Category } from '../components/category';
 import { cards } from '../data/cards';
 
 const Homepage: FC = () => {
@@ -35,4 +35,4 @@ const Homepage: FC = () => {
   );
 };
 
-export default Homepage;
+export { Homepage };

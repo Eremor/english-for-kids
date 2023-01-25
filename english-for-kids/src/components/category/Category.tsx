@@ -50,4 +50,4 @@ const Category: FC<CategoryProp> = ({ title, image, length }) => {
   );
 };
 
-export default Category;
+export { Category };

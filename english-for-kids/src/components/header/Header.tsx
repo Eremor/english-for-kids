@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { AppBar, Container } from '@mui/material';
 
-import Switch from '../switch';
+import { Switch } from '../switch';
 import { Drawer } from '../drawer';
 import { Toolbar } from '../toolbar';
 

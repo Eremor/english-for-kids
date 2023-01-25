@@ -30,4 +30,4 @@ const CustomCard = styled(Card)(({ flip }: CustomCardProps) => ({
   },
 }));
 
-export default CustomCard;
+export { CustomCard };

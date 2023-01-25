@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { Container } from '@mui/material';
 
 import { Category } from '../interfaces/Category';
-import Card from '../components/card';
+import { Card } from '../components/card';
 import { cards } from '../data/cards';
 
 const Categorypage: FC = () => {
