@@ -1,6 +1,5 @@
 import React, { FC, useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import { Drawer as CustomDrawer, useMediaQuery, MenuList, useTheme } from '@mui/material';
+import { Drawer as CustomDrawer, useMediaQuery, MenuList } from '@mui/material';
 
 import { MenuLink } from '../link/MenuLink';
 import { cards } from '../../data/cards';
