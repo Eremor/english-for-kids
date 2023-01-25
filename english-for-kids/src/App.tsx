@@ -2,7 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material';
 
-import Header from './components/header';
+import { Header } from './components/header';
 import Homepage from './pages/Homepage';
 import { Categorypage } from './pages/Categorypage';
 

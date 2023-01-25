@@ -1,17 +1,11 @@
 import React, { FC } from 'react';
-import { AppBar, Toolbar, IconButton, Container } from '@mui/material';
-import { CloseRounded, MenuRounded } from '@mui/icons-material';
-
-import { useAppSelect, useAppDispatch } from '../../store/hooks';
-import { toggleMenu } from '../../store/slices/base';
+import { AppBar, Container } from '@mui/material';
 
 import Switch from '../switch';
 import { Drawer } from '../drawer';
+import { Toolbar } from '../toolbar';
 
 const Header: FC = () => {
-  const { isOpenDrawer } = useAppSelect((state) => state.base);
-  const dispatch = useAppDispatch();
-
   return (
     <AppBar position="static" color="transparent" sx={{ boxShadow: 0 }}>
       <Drawer />
@@ -19,19 +13,11 @@ const Header: FC = () => {
         maxWidth={false}
         sx={{ display: 'flex', alignItems: 'center', mt: 2, maxWidth: 1440 }}
       >
-        <Toolbar sx={{ zIndex: 11 }}>
-          <IconButton
-            color="primary"
-            size="large"
-            onClick={() => dispatch(toggleMenu(!isOpenDrawer))}
-          >
-            {isOpenDrawer ? <CloseRounded fontSize="large" /> : <MenuRounded fontSize="large" />}
-          </IconButton>
-        </Toolbar>
+        <Toolbar />
         <Switch sx={{ ml: 'auto' }} defaultChecked />
       </Container>
     </AppBar>
   );
 };
 
-export default Header;
+export { Header };
