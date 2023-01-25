@@ -1,9 +1,9 @@
 import React, { FC, useState, useEffect, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
-import { Container } from '@mui/material';
 
-import { Category } from '../interfaces/Category';
+import { Layout } from '../components/layout';
 import { Card } from '../components/card';
+import { Category } from '../interfaces/Category';
 import { cards } from '../data/cards';
 
 const Categorypage: FC = () => {
@@ -25,25 +25,11 @@ const Categorypage: FC = () => {
   }, [category, initData]);
 
   return (
-    <Container
-      maxWidth={false}
-      sx={{
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: {
-          lg: 'flex-start',
-          md: 'center',
-          xs: 'center',
-        },
-        marginTop: 10,
-        maxWidth: 1440,
-        gap: 5,
-      }}
-    >
+    <Layout sx={{ marginTop: 8 }}>
       {data.words.map(({ id, title, translate, image }) => (
         <Card key={id} title={title} translate={translate} image={image} />
       ))}
-    </Container>
+    </Layout>
   );
 };
 
