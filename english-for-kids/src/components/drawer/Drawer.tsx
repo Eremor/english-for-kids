@@ -1,21 +1,25 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { Drawer as CustomDrawer, useMediaQuery, MenuList } from '@mui/material';
+
+import { useAppSelect, useAppDispatch } from '../../store/hooks';
+import { toggleMenu } from '../../store/slices/base';
 
 import { MenuLink } from '../link/MenuLink';
 import { cards } from '../../data/cards';
 
 const Drawer: FC = () => {
   const matches = useMediaQuery('(min-width: 1440px)');
-  const [open, setOpen] = useState(false);
+  const { isOpenDrawer } = useAppSelect((state) => state.base);
+  const dispatch = useAppDispatch();
 
   return (
     <CustomDrawer
-      open={open}
+      open={isOpenDrawer}
       sx={{ zIndex: 10 }}
       PaperProps={{
         sx: { pt: 10, width: matches ? '25%' : '320px', alignItems: 'center' },
       }}
-      onClose={() => setOpen(false)}
+      onClose={() => dispatch(toggleMenu(false))}
     >
       <MenuList sx={{ width: '100%' }}>
         <MenuLink to="" title="main page" />
