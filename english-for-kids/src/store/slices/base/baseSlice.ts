@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 const initialState = {
   isOpenDrawer: false,
+  isTrainMode: true,
 };
 
 export const baseSlice = createSlice({
@@ -11,8 +12,11 @@ export const baseSlice = createSlice({
     toggleMenu: (state, action: PayloadAction<boolean>) => {
       state.isOpenDrawer = action.payload;
     },
+    toggleTrainMode: (state, action: PayloadAction<boolean>) => {
+      state.isTrainMode = action.payload;
+    },
   },
 });
 
-export const { toggleMenu } = baseSlice.actions;
+export const { toggleMenu, toggleTrainMode } = baseSlice.actions;
 export default baseSlice.reducer;
