@@ -1,12 +1,17 @@
-import React, { FC, useState } from 'react';
-import { AppBar, Toolbar, IconButton, Container } from '@mui/material';
-import { CloseRounded, MenuRounded } from '@mui/icons-material';
+import React, { FC } from 'react';
+import { AppBar, Container } from '@mui/material';
 
-import Switch from '../switch';
+import { useAppSelect, useAppDispatch } from '../../store/hooks';
+import { toggleTrainMode } from '../../store/slices/base';
+
+import { Switch } from '../switch';
 import { Drawer } from '../drawer';
+import { Toolbar } from '../toolbar';
 
 const Header: FC = () => {
-  const [isOpen, setOpen] = useState(false);
+  const { isTrainMode } = useAppSelect((state) => state.base);
+  const dispatch = useAppDispatch();
+
   return (
     <AppBar position="static" color="transparent" sx={{ boxShadow: 0 }}>
       <Drawer />
@@ -14,15 +19,15 @@ const Header: FC = () => {
         maxWidth={false}
         sx={{ display: 'flex', alignItems: 'center', mt: 2, maxWidth: 1440 }}
       >
-        <Toolbar sx={{ zIndex: 11 }}>
-          <IconButton color="primary" size="large" onClick={() => setOpen((prev) => !prev)}>
-            {isOpen ? <CloseRounded fontSize="large" /> : <MenuRounded fontSize="large" />}
-          </IconButton>
-        </Toolbar>
-        <Switch sx={{ ml: 'auto' }} defaultChecked />
+        <Toolbar />
+        <Switch
+          sx={{ ml: 'auto' }}
+          checked={isTrainMode}
+          onChange={() => dispatch(toggleTrainMode(!isTrainMode))}
+        />
       </Container>
     </AppBar>
   );
 };
 
-export default Header;
+export { Header };

@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import {
   Box,
   Card,
@@ -10,6 +10,8 @@ import {
   useTheme,
 } from '@mui/material';
 
+import { useAppSelect } from '../../store/hooks';
+
 type CategoryProp = {
   image: string;
   title: string;
@@ -18,7 +20,7 @@ type CategoryProp = {
 
 const Category: FC<CategoryProp> = ({ title, image, length }) => {
   const theme = useTheme();
-  const [gameMode] = useState('play');
+  const { isTrainMode } = useAppSelect((state) => state.base);
 
   return (
     <Card sx={{ maxWidth: 295, borderRadius: 3, width: '100%' }}>
@@ -38,7 +40,7 @@ const Category: FC<CategoryProp> = ({ title, image, length }) => {
                 width: 17,
                 height: 17,
                 backgroundColor: `${
-                  gameMode === 'train' ? theme.palette.primary.main : theme.palette.secondary.main
+                  isTrainMode ? theme.palette.primary.main : theme.palette.secondary.main
                 }`,
                 borderRadius: '50%',
               }}
@@ -50,4 +52,4 @@ const Category: FC<CategoryProp> = ({ title, image, length }) => {
   );
 };
 
-export default Category;
+export { Category };

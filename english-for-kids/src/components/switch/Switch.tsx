@@ -1,6 +1,6 @@
-import { styled, Switch } from '@mui/material';
+import { styled, Switch as CustomSwitch } from '@mui/material';
 
-const ModeSwitch = styled(Switch)(({ theme }) => ({
+const Switch = styled(CustomSwitch)(({ theme }) => ({
   padding: '5px 12px',
   width: 120,
   height: 40,
@@ -51,4 +51,4 @@ const ModeSwitch = styled(Switch)(({ theme }) => ({
   },
 }));
 
-export default ModeSwitch;
+export { Switch };

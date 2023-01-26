@@ -1,9 +1,13 @@
 import React, { FC, useState, useEffect, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
-import { Container } from '@mui/material';
 
+import { Button } from '@mui/material';
+
+import { useAppSelect } from '../store/hooks';
+
+import { Layout } from '../components/layout';
+import { Card } from '../components/card';
 import { Category } from '../interfaces/Category';
-import Card from '../components/card';
 import { cards } from '../data/cards';
 
 const Categorypage: FC = () => {
@@ -17,6 +21,7 @@ const Categorypage: FC = () => {
     []
   );
   const { category } = useParams();
+  const { isTrainMode } = useAppSelect((state) => state.base);
   const [data, setData] = useState<Category>(initData);
 
   useEffect(() => {
@@ -25,25 +30,24 @@ const Categorypage: FC = () => {
   }, [category, initData]);
 
   return (
-    <Container
-      maxWidth={false}
-      sx={{
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: {
-          lg: 'flex-start',
-          md: 'center',
-          xs: 'center',
-        },
-        marginTop: 10,
-        maxWidth: 1440,
-        gap: 5,
-      }}
-    >
-      {data.words.map(({ id, title, translate, image }) => (
-        <Card key={id} title={title} translate={translate} image={image} />
-      ))}
-    </Container>
+    <>
+      <Layout sx={{ marginTop: 8 }}>
+        {data.words.map(({ id, title, translate, image }) => (
+          <Card key={id} title={title} translate={translate} image={image} />
+        ))}
+      </Layout>
+      <Layout sx={{ marginY: 4 }}>
+        {!isTrainMode && (
+          <Button
+            variant="contained"
+            sx={{ borderRadius: '15px', color: 'white', fontWeight: '400' }}
+            color="secondary"
+          >
+            Start game
+          </Button>
+        )}
+      </Layout>
+    </>
   );
 };
 
