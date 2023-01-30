@@ -1,4 +1,4 @@
-import React, { FC, MouseEventHandler, useState } from 'react';
+import React, { FC, MouseEventHandler, useState, useEffect } from 'react';
 import { CardContent, CardMedia, IconButton, Stack, Typography } from '@mui/material';
 import { RefreshRounded } from '@mui/icons-material';
 
@@ -7,9 +7,10 @@ import { useAppSelect } from '../../store/hooks';
 import { CustomCard } from './CustomCard';
 import { Word } from '../../interfaces/Word';
 
-type CardProps = Pick<Word, 'title' | 'translate' | 'image'>;
+type CardProps = Pick<Word, 'title' | 'translate' | 'image' | 'audio'>;
 
-const Card: FC<CardProps> = ({ title, translate, image }: CardProps) => {
+const Card: FC<CardProps> = ({ title, translate, image, audio }: CardProps) => {
+  const [isPlay, setPlay] = useState(false);
   const [flip, setFlip] = useState(false);
   const { isTrainMode } = useAppSelect((state) => state.base);
 
@@ -17,6 +18,17 @@ const Card: FC<CardProps> = ({ title, translate, image }: CardProps) => {
     event.stopPropagation();
     setFlip(true);
   };
+
+  useEffect(() => {
+    const sound = new Audio(audio);
+    if (isPlay) {
+      sound.play();
+    } else {
+      sound.pause();
+      sound.currentTime = 0;
+    }
+    sound.addEventListener('ended', () => setPlay(false));
+  }, [isPlay, audio]);
 
   return (
     <CustomCard
@@ -27,6 +39,7 @@ const Card: FC<CardProps> = ({ title, translate, image }: CardProps) => {
         boxShadow: `${!isTrainMode && 'none'}`,
       }}
       flip={flip ? flip.toString() : undefined}
+      onClick={() => (isTrainMode ? setPlay(true) : console.log('set answer'))}
     >
       <Stack className="front">
         <CardMedia

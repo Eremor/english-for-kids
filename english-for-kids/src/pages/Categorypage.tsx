@@ -32,8 +32,8 @@ const Categorypage: FC = () => {
   return (
     <>
       <Layout sx={{ marginTop: 8 }}>
-        {data.words.map(({ id, title, translate, image }) => (
-          <Card key={id} title={title} translate={translate} image={image} />
+        {data.words.map(({ id, title, translate, image, audio }) => (
+          <Card key={id} title={title} translate={translate} image={image} audio={audio} />
         ))}
       </Layout>
       <Layout sx={{ marginY: 4 }}>
