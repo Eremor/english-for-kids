@@ -1,38 +1,27 @@
-import React, { FC, useState, useEffect, useMemo } from 'react';
+import React, { FC, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { Button } from '@mui/material';
 
-import { useAppSelect } from '../store/hooks';
+import { useAppSelect, useAppDispatch } from '../store/hooks';
+import { setCurrentCategoryWords } from '../store/slices/base';
 
 import { Layout } from '../components/layout';
 import { Card } from '../components/card';
-import { Category } from '../interfaces/Category';
-import { cards } from '../data/cards';
 
 const Categorypage: FC = () => {
-  const initData: Category = useMemo(
-    () => ({
-      id: '',
-      image: '',
-      title: '',
-      words: [],
-    }),
-    []
-  );
   const { category } = useParams();
-  const { isTrainMode } = useAppSelect((state) => state.base);
-  const [data, setData] = useState<Category>(initData);
+  const dispatch = useAppDispatch();
+  const { isTrainMode, currentCategoryWords } = useAppSelect((state) => state.base);
 
   useEffect(() => {
-    const foundCategory: Category = cards.find((card) => card.title === category) || initData;
-    setData(foundCategory);
-  }, [category, initData]);
+    dispatch(setCurrentCategoryWords(category!));
+  }, [category, dispatch]);
 
   return (
     <>
       <Layout sx={{ marginTop: 8 }}>
-        {data.words.map(({ id, title, translate, image, audio }) => (
+        {currentCategoryWords.map(({ id, title, translate, image, audio }) => (
           <Card key={id} title={title} translate={translate} image={image} audio={audio} />
         ))}
       </Layout>
