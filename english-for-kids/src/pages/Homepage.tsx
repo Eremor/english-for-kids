@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Category } from '../components/category';
@@ -7,14 +7,14 @@ import { cards } from '../data/cards';
 
 const Homepage: FC = () => {
   return (
-    <Layout sx={{ marginTop: 8 }}>
-      {cards.map((category) => (
+    <Layout sx={{ marginY: 8 }}>
+      {cards.map(({ id, title, image, words }) => (
         <Link
-          key={category.id}
-          to={`/${category.title}`}
+          key={id}
+          to={`/${title}`}
           style={{ textDecoration: 'none', width: '100%', maxWidth: '295px' }}
         >
-          <Category title={category.title} image={category.image} length={category.words.length} />
+          <Category title={title} image={image} length={words.length} />
         </Link>
       ))}
     </Layout>

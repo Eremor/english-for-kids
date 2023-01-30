@@ -1,8 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { BaseState } from '../../types';
+import { cards } from '../../../data/cards';
 
-const initialState = {
+const initialState: BaseState = {
   isOpenDrawer: false,
   isTrainMode: true,
+  currentCategoryWords: [],
 };
 
 export const baseSlice = createSlice({
