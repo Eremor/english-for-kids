@@ -4,7 +4,7 @@ export const cards: Category[] = [
   {
     id: '39c01a03-5327-4eaa-81e8-e1e56e861ed1',
     title: 'fairytales',
-    image: 'img/main/fairytales.png',
+    image: 'img/main/fairytales.jpg',
     words: [
       {
         id: '75f3d4ff-ce07-4783-8f3f-c8c76042d38f',
@@ -130,7 +130,7 @@ export const cards: Category[] = [
   {
     id: '458ae8a9-f2b6-4248-83c4-7276fefc11de',
     title: 'food',
-    image: 'img/main/food.png',
+    image: 'img/main/food.jpg',
     words: [
       {
         id: 'c408dad7-5152-4e71-a245-60e1b45c6cf6',
@@ -193,7 +193,7 @@ export const cards: Category[] = [
   {
     id: '7efc66f0-9adb-4819-8098-d11efa6380cd',
     title: 'emotions',
-    image: 'img/main/emotions.png',
+    image: 'img/main/emotions.jpg',
     words: [
       {
         id: '1783898b-4d00-42ea-8726-1e1de6433b8e',
@@ -256,7 +256,7 @@ export const cards: Category[] = [
   {
     id: '337d13f6-21d1-41a6-bda5-05d8cb242c08',
     title: 'clothes',
-    image: 'img/main/clothes.png',
+    image: 'img/main/clothes.jpg',
     words: [
       {
         id: '34514a50-efae-4953-8303-42981696e746',
@@ -319,7 +319,7 @@ export const cards: Category[] = [
   {
     id: '88e48657-bcd7-4531-a7e8-c6c9a2c89213',
     title: 'fruits',
-    image: 'img/main/fruits.png',
+    image: 'img/main/fruits.jpg',
     words: [
       {
         id: '4e6f41c8-58be-4bfd-b4f0-e9d5b20dc350',
@@ -382,7 +382,7 @@ export const cards: Category[] = [
   {
     id: 'a392269d-5f6c-48e0-b088-231cadfe440e',
     title: 'berries',
-    image: 'img/main/berries.png',
+    image: 'img/main/berries.jpg',
     words: [
       {
         id: 'ad1c3055-0a40-484f-92b4-16cf9e2387f4',
@@ -445,7 +445,7 @@ export const cards: Category[] = [
   {
     id: '721b081a-06bb-41d1-b257-662fb8062797',
     title: 'vegetables',
-    image: 'img/main/vegetables.png',
+    image: 'img/main/vegetables.jpg',
     words: [
       {
         id: 'f873669e-8518-47ca-8ff9-5745bf1acffc',
