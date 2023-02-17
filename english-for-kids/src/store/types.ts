@@ -9,4 +9,6 @@ export interface BaseState {
 
 export interface GameState {
   roundWords: Word[];
+  roundIndex: number;
+  // currentWord: Word | null;
 }
