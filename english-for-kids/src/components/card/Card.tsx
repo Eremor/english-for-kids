@@ -14,7 +14,7 @@ const Card: FC<CardProps> = ({ title, translate, image, audio }: CardProps) => {
   const [flip, setFlip] = useState(false);
   const { isTrainMode } = useAppSelect((state) => state.base);
 
-  const handleFlip: MouseEventHandler = (event) => {
+  const handlerFlip: MouseEventHandler = (event) => {
     event.stopPropagation();
     setFlip(true);
   };
@@ -54,7 +54,7 @@ const Card: FC<CardProps> = ({ title, translate, image, audio }: CardProps) => {
               <Typography variant="h5" sx={{ fontWeight: '500', textTransform: 'capitalize' }}>
                 {title}
               </Typography>
-              <IconButton onClick={handleFlip}>
+              <IconButton onClick={handlerFlip}>
                 <RefreshRounded />
               </IconButton>
             </Stack>

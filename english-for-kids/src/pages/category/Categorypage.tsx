@@ -21,6 +21,11 @@ const Categorypage: FC = () => {
 
   const [isGameStart, setGameStart] = useState(false);
 
+  const playCurrentSound = (currentSound: string) => {
+    const sound = new Audio(currentSound);
+    sound.play();
+  };
+
   useEffect(() => {
     dispatch(setCurrentCategoryWords(category!));
   }, [category, dispatch]);
@@ -33,10 +38,13 @@ const Categorypage: FC = () => {
     }
   }, [isTrainMode, currentCategoryWords, dispatch]);
 
-  const repeatCurrentSound = (currentSound: string) => {
-    const sound = new Audio(currentSound);
-    sound.play();
-  };
+  useEffect(() => {
+    if (isGameStart) {
+      if (roundIndex < roundWords.length) {
+        playCurrentSound(roundWords[roundIndex].audio);
+      }
+    }
+  }, [isGameStart, roundIndex, roundWords]);
 
   return (
     <>
@@ -45,7 +53,7 @@ const Categorypage: FC = () => {
           <Card key={id} title={title} translate={translate} image={image} audio={audio} />
         ))}
       </Layout>
-      <Layout sx={{ marginY: 4, justifyContent: `${isGameStart && 'center'}` }}>
+      <Layout sx={{ marginY: 4, justifyContent: 'center' }}>
         {!isTrainMode &&
           (!isGameStart ? (
             <Button
@@ -60,7 +68,7 @@ const Categorypage: FC = () => {
             <Button
               variant="contained"
               color="secondary"
-              onClick={() => repeatCurrentSound(roundWords[roundIndex].audio)}
+              onClick={() => playCurrentSound(roundWords[roundIndex].audio)}
             >
               <ReplayRounded sx={{ color: 'white' }} fontSize="medium" />
             </Button>
