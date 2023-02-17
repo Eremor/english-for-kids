@@ -6,3 +6,7 @@ export interface BaseState {
   isTrainMode: boolean;
   currentCategoryWords: Word[];
 }
+
+export interface GameState {
+  roundWords: Word[];
+}

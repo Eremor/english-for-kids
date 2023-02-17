@@ -1,12 +1,13 @@
 import { Card, styled, PaperProps } from '@mui/material';
-import { useAppSelect } from '../../store/hooks';
 
 interface CustomCardProps extends PaperProps {
   flip: string | undefined;
+  // answered: boolean;
 }
 
 const CustomCard = styled(Card)(({ flip }: CustomCardProps) => {
-  const { isTrainMode } = useAppSelect((state) => state.base);
+  // const { isTrainMode } = useAppSelect((state) => state.base);
+  const answered = false;
 
   return {
     position: 'relative',
@@ -34,9 +35,9 @@ const CustomCard = styled(Card)(({ flip }: CustomCardProps) => {
     },
     '&:hover': {
       boxShadow: `${
-        isTrainMode
-          ? '0px 2px 8px 6px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%)'
-          : 'none'
+        answered
+          ? 'none'
+          : '0px 2px 8px 6px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%)'
       }`,
     },
   };

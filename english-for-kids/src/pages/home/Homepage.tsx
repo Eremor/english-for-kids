@@ -1,9 +1,9 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 
-import { Category } from '../components/category';
-import { Layout } from '../components/layout';
-import { cards } from '../data/cards';
+import { Category } from '../../components/category';
+import { Layout } from '../../components/layout';
+import { cards } from '../../data/cards';
 
 const Homepage: FC = () => {
   return (
