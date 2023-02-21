@@ -4,8 +4,8 @@ import { Word } from '../../../interfaces/Word';
 
 const initialGameState: GameState = {
   roundWords: [],
-  // currentWord: null,
   roundIndex: 0,
+  rightAnswers: [],
 };
 
 export const gameSLice = createSlice({
@@ -21,8 +21,12 @@ export const gameSLice = createSlice({
     setRoundIndex: (state, action: PayloadAction<number>) => {
       state.roundIndex = action.payload;
     },
+    addRightAnswers: (state, action: PayloadAction<Word>) => {
+      state.rightAnswers.push(action.payload);
+    },
+    cleanGameSlice: () => initialGameState,
   },
 });
 
-export const { setRoundWords, setRoundIndex } = gameSLice.actions;
+export const { setRoundWords, setRoundIndex, addRightAnswers, cleanGameSlice } = gameSLice.actions;
 export default gameSLice.reducer;
