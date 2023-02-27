@@ -5,7 +5,7 @@ import { Button } from '@mui/material';
 import { ReplayRounded } from '@mui/icons-material';
 
 import { useAppSelect, useAppDispatch } from '../../store/hooks';
-import { setCurrentCategoryWords } from '../../store/slices/base';
+import { setCurrentCategoryWords, cleanBaseSlice } from '../../store/slices/base';
 import { setRoundWords, cleanGameSlice } from '../../store/slices/game';
 
 import { shuffleArray } from '../../utility/helpers';
@@ -35,6 +35,11 @@ const Categorypage: FC = () => {
 
   useEffect(() => {
     dispatch(setCurrentCategoryWords(category as string));
+
+    return () => {
+      dispatch(cleanBaseSlice());
+      dispatch(cleanGameSlice());
+    };
   }, [category, dispatch]);
 
   useEffect(() => {

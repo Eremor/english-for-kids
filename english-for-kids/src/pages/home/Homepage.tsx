@@ -7,7 +7,7 @@ import { cards } from '../../data/cards';
 
 const Homepage: FC = () => {
   return (
-    <Layout sx={{ marginY: 8 }}>
+    <Layout sx={{ marginY: 8, gap: 5 }}>
       {cards.map(({ id, title, image, words }) => (
         <Link
           key={id}

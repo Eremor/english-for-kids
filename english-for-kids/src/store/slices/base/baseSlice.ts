@@ -22,8 +22,10 @@ export const baseSlice = createSlice({
       const currentCategoryData = cards.find((category) => category.title === action.payload);
       state.currentCategoryWords = currentCategoryData!.words;
     },
+    cleanBaseSlice: () => initialState,
   },
 });
 
-export const { toggleMenu, toggleTrainMode, setCurrentCategoryWords } = baseSlice.actions;
+export const { toggleMenu, toggleTrainMode, setCurrentCategoryWords, cleanBaseSlice } =
+  baseSlice.actions;
 export default baseSlice.reducer;

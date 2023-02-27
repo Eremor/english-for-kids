@@ -7,7 +7,15 @@ type RatingProps = {
 
 const Rating: FC<RatingProps> = ({ arr }) => {
   return (
-    <>{arr.map((item) => (item ? <Favorite color="error" /> : <FavoriteBorder color="error" />))}</>
+    <>
+      {arr.map((item, index) =>
+        item ? (
+          <Favorite key={index.toString()} color="primary" />
+        ) : (
+          <FavoriteBorder key={index.toString()} color="primary" />
+        )
+      )}
+    </>
   );
 };
 
