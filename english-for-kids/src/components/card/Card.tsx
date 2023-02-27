@@ -3,11 +3,14 @@ import { CardContent, CardMedia, IconButton, Stack, Typography } from '@mui/mate
 import { RefreshRounded } from '@mui/icons-material';
 
 import { useAppDispatch, useAppSelect } from '../../store/hooks';
-import { addRightAnswers, setRoundIndex } from '../../store/slices/game';
+import { addRightAnswers, setRoundIndex, addRoundAnswers } from '../../store/slices/game';
 
 import { Word } from '../../interfaces/Word';
 import { CustomCard } from './CustomCard';
 import { checkAnswer } from '../../utility/helpers';
+
+import rightAnswerSound from '../../assets/sounds/right-answer.mp3';
+import wrongAnswerSound from '../../assets/sounds/wrong-answer.mp3';
 
 type DisabledType = {
   disabled: boolean;
@@ -18,10 +21,13 @@ type CardProps = Word & DisabledType;
 const Card: FC<CardProps> = ({ id, title, translate, image, audio, disabled }: CardProps) => {
   const dispatch = useAppDispatch();
   const { isTrainMode } = useAppSelect((state) => state.base);
-  const { roundWords, roundIndex } = useAppSelect((state) => state.game);
+  const { roundWords, roundIndex, roundAnswers } = useAppSelect((state) => state.game);
 
   const [isPlay, setPlay] = useState(false);
   const [flip, setFlip] = useState(false);
+
+  const rightAnswerAudio = new Audio(rightAnswerSound);
+  const wrongAnswerAudio = new Audio(wrongAnswerSound);
 
   const handlerFlip: MouseEventHandler = (event) => {
     event.stopPropagation();
@@ -29,10 +35,24 @@ const Card: FC<CardProps> = ({ id, title, translate, image, audio, disabled }: C
   };
 
   const chooseAnswer = () => {
-    if (checkAnswer(title, roundWords[roundIndex].title)) {
-      dispatch(addRightAnswers({ id, title, translate, image, audio }));
-      const index = roundIndex + 1;
-      dispatch(setRoundIndex(index));
+    if (!disabled) {
+      if (checkAnswer(title, roundWords[roundIndex].title)) {
+        rightAnswerAudio.play();
+        dispatch(addRightAnswers({ id, title, translate, image, audio }));
+
+        if (roundAnswers.length <= roundIndex) {
+          dispatch(addRoundAnswers(true));
+        }
+
+        const index = roundIndex + 1;
+        dispatch(setRoundIndex(index));
+      } else {
+        wrongAnswerAudio.play();
+
+        if (roundAnswers.length <= roundIndex) {
+          dispatch(addRoundAnswers(false));
+        }
+      }
     }
   };
 

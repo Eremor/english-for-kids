@@ -15,7 +15,6 @@ const Layout: FC<ContainerProps> = (props) => {
           xs: 'center',
         },
         maxWidth: 1440,
-        gap: 5,
         ...sx,
       }}
     >

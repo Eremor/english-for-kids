@@ -6,6 +6,7 @@ const initialGameState: GameState = {
   roundWords: [],
   roundIndex: 0,
   rightAnswers: [],
+  roundAnswers: [],
 };
 
 export const gameSLice = createSlice({
@@ -24,9 +25,13 @@ export const gameSLice = createSlice({
     addRightAnswers: (state, action: PayloadAction<Word>) => {
       state.rightAnswers.push(action.payload);
     },
+    addRoundAnswers: (state, action: PayloadAction<boolean>) => {
+      state.roundAnswers.push(action.payload);
+    },
     cleanGameSlice: () => initialGameState,
   },
 });
 
-export const { setRoundWords, setRoundIndex, addRightAnswers, cleanGameSlice } = gameSLice.actions;
+export const { setRoundWords, setRoundIndex, addRightAnswers, addRoundAnswers, cleanGameSlice } =
+  gameSLice.actions;
 export default gameSLice.reducer;

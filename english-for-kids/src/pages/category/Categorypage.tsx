@@ -5,19 +5,22 @@ import { Button } from '@mui/material';
 import { ReplayRounded } from '@mui/icons-material';
 
 import { useAppSelect, useAppDispatch } from '../../store/hooks';
-import { setCurrentCategoryWords, toggleTrainMode } from '../../store/slices/base';
+import { setCurrentCategoryWords } from '../../store/slices/base';
 import { setRoundWords, cleanGameSlice } from '../../store/slices/game';
 
 import { shuffleArray } from '../../utility/helpers';
 
 import { Layout } from '../../components/layout';
 import { Card } from '../../components/card';
+import { Rating } from '../../components/rating';
 
 const Categorypage: FC = () => {
   const { category } = useParams();
   const dispatch = useAppDispatch();
   const { isTrainMode, currentCategoryWords } = useAppSelect((state) => state.base);
-  const { roundWords, roundIndex, rightAnswers } = useAppSelect((state) => state.game);
+  const { roundWords, roundIndex, rightAnswers, roundAnswers } = useAppSelect(
+    (state) => state.game
+  );
 
   const [isGameStart, setGameStart] = useState(false);
 
@@ -49,14 +52,14 @@ const Categorypage: FC = () => {
         playCurrentSound(roundWords[roundIndex].audio);
       } else {
         // end game
-        dispatch(toggleTrainMode(true));
+        // dispatch(toggleTrainMode(true));
       }
     }
   }, [isGameStart, roundIndex, roundWords, dispatch]);
 
   return (
     <>
-      <Layout sx={{ marginTop: 8 }}>
+      <Layout sx={{ marginTop: 8, gap: 5 }}>
         {currentCategoryWords.map(({ id, title, translate, image, audio }) => (
           <Card
             key={id}
@@ -68,6 +71,9 @@ const Categorypage: FC = () => {
             disabled={checkDisabledCards(id)}
           />
         ))}
+      </Layout>
+      <Layout sx={{ marginTop: 4, gap: 2 }}>
+        <Rating arr={roundAnswers} />
       </Layout>
       <Layout sx={{ marginY: 4, justifyContent: 'center' }}>
         {!isTrainMode &&

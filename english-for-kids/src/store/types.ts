@@ -10,4 +10,5 @@ export interface GameState {
   roundWords: Word[];
   roundIndex: number;
   rightAnswers: Word[];
+  roundAnswers: boolean[];
 }
